@@ -126,6 +126,48 @@ generatePsychedelicImage('public/images/og-phantom-pocket.png', [
   [0.6, 0.3, 0.6],
 ], 1200, 630);
 
+// Generate membrane between states image
+generatePsychedelicImage('public/images/membrane-states.png', [
+  [0.7, 0.3, 0.5],   // Rose
+  [0.4, 0.2, 0.6],   // Deep purple
+  [0.8, 0.5, 0.3],   // Burnt orange
+]);
+
+// Generate subdivision of the instant image
+generatePsychedelicImage('public/images/subdivision-instant.png', [
+  [0.9, 0.2, 0.4],   // Magenta
+  [0.3, 0.7, 0.9],   // Sky blue
+  [0.7, 0.5, 0.2],   // Ochre
+]);
+
+// Generate resonance in absence image
+generatePsychedelicImage('public/images/resonance-absence.png', [
+  [0.5, 0.3, 0.7],   // Violet
+  [0.2, 0.6, 0.8],   // Cerulean
+  [0.8, 0.4, 0.3],   // Terra cotta
+]);
+
+// Generate membrane between states OG image
+generatePsychedelicImage('public/images/og-membrane-states.png', [
+  [0.7, 0.3, 0.5],
+  [0.4, 0.2, 0.6],
+  [0.8, 0.5, 0.3],
+], 1200, 630);
+
+// Generate subdivision of the instant OG image
+generatePsychedelicImage('public/images/og-subdivision-instant.png', [
+  [0.9, 0.2, 0.4],
+  [0.3, 0.7, 0.9],
+  [0.7, 0.5, 0.2],
+], 1200, 630);
+
+// Generate resonance in absence OG image
+generatePsychedelicImage('public/images/og-resonance-absence.png', [
+  [0.5, 0.3, 0.7],
+  [0.2, 0.6, 0.8],
+  [0.8, 0.4, 0.3],
+], 1200, 630);
+
 // Generate default OG image for homepage
 generatePsychedelicImage('public/images/og-default.png', [
   [0.6, 0.2, 0.8],   // Cosmic purple
