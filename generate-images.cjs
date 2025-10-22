@@ -174,3 +174,73 @@ generatePsychedelicImage('public/images/og-default.png', [
   [0.8, 0.3, 0.1],   // Burnt sienna
   [0.5, 0.5, 0.5],   // Exhausted gray
 ], 1200, 630);
+
+// Generate weather report image
+generatePsychedelicImage('public/images/weather-nowhere.png', [
+  [0.6, 0.7, 0.9],   // Sky blue
+  [0.5, 0.6, 0.7],   // Storm gray
+  [0.7, 0.8, 0.8],   // Misty white
+]);
+
+// Generate folding sound image
+generatePsychedelicImage('public/images/folding-sound.png', [
+  [0.8, 0.3, 0.5],   // Warm pink
+  [0.4, 0.6, 0.8],   // Cool blue
+  [0.6, 0.4, 0.6],   // Purple blend
+]);
+
+// Generate between skins image
+generatePsychedelicImage('public/images/between-skins.png', [
+  [0.7, 0.5, 0.5],   // Dusty rose
+  [0.6, 0.7, 0.6],   // Sage green
+  [0.6, 0.6, 0.7],   // Lavender gray
+]);
+
+// Generate frequency audit image
+generatePsychedelicImage('public/images/frequency-audit.png', [
+  [0.5, 0.5, 0.6],   // Municipal gray
+  [0.6, 0.6, 0.7],   // Office blue
+  [0.5, 0.6, 0.5],   // Bureaucratic green
+]);
+
+// Generate backward gesture image
+generatePsychedelicImage('public/images/backward-gesture.png', [
+  [0.5, 0.4, 0.7],   // Temporal purple
+  [0.7, 0.5, 0.4],   // Ochre motion
+  [0.4, 0.6, 0.6],   // Teal echo
+]);
+
+// Generate weather report OG image
+generatePsychedelicImage('public/images/og-weather-nowhere.png', [
+  [0.6, 0.7, 0.9],
+  [0.5, 0.6, 0.7],
+  [0.7, 0.8, 0.8],
+], 1200, 630);
+
+// Generate folding sound OG image
+generatePsychedelicImage('public/images/og-folding-sound.png', [
+  [0.8, 0.3, 0.5],
+  [0.4, 0.6, 0.8],
+  [0.6, 0.4, 0.6],
+], 1200, 630);
+
+// Generate between skins OG image
+generatePsychedelicImage('public/images/og-between-skins.png', [
+  [0.7, 0.5, 0.5],
+  [0.6, 0.7, 0.6],
+  [0.6, 0.6, 0.7],
+], 1200, 630);
+
+// Generate frequency audit OG image
+generatePsychedelicImage('public/images/og-frequency-audit.png', [
+  [0.5, 0.5, 0.6],
+  [0.6, 0.6, 0.7],
+  [0.5, 0.6, 0.5],
+], 1200, 630);
+
+// Generate backward gesture OG image
+generatePsychedelicImage('public/images/og-backward-gesture.png', [
+  [0.5, 0.4, 0.7],
+  [0.7, 0.5, 0.4],
+  [0.4, 0.6, 0.6],
+], 1200, 630);
