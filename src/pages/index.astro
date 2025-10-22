@@ -6,6 +6,13 @@ import TagCloud from '../components/TagCloud.astro';
 const posts = await getCollection('posts');
 const sortedPosts = posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
+// Filter by tag if present in URL
+const url = new URL(Astro.request.url);
+const filterTag = url.searchParams.get('tag');
+const filteredPosts = filterTag
+  ? sortedPosts.filter(post => post.data.tags?.includes(filterTag))
+  : sortedPosts;
+
 // Map slugs to preview images
 const previewImages = {
   'meaning-in-rhythm': '/pizzatownbuffet/images/rhythm-meaning.png',
@@ -114,6 +121,60 @@ const ogImage = `${siteUrl}/pizzatownbuffet/images/og-default.png`;
 			.site-footer a {
 				color: var(--cosmic-purple);
 			}
+			.filter-status {
+				background: rgba(107, 44, 145, 0.1);
+				border: 1px solid var(--cosmic-purple);
+				border-radius: 8px;
+				padding: var(--space-sm) var(--space-md);
+				display: flex;
+				align-items: center;
+				gap: var(--space-xs);
+				margin-bottom: var(--space-md);
+				font-family: monospace;
+			}
+			.filter-label {
+				color: var(--exhausted-gray);
+				font-size: 0.9rem;
+			}
+			.filter-tag {
+				color: var(--cosmic-purple);
+				font-weight: bold;
+				padding: 0.2rem 0.6rem;
+				background: rgba(107, 44, 145, 0.15);
+				border-radius: 12px;
+			}
+			.clear-filter {
+				color: var(--burnt-sienna);
+				text-decoration: none;
+				margin-left: auto;
+				padding: 0.2rem 0.6rem;
+				border: 1px solid var(--burnt-sienna);
+				border-radius: 12px;
+				transition: all 0.3s ease;
+			}
+			.clear-filter:hover {
+				background: var(--burnt-sienna);
+				color: white;
+			}
+			.no-results {
+				text-align: center;
+				padding: var(--space-xl);
+				color: var(--exhausted-gray);
+			}
+			.no-results p {
+				font-size: 1.2rem;
+				font-style: italic;
+				margin-bottom: var(--space-md);
+			}
+			.no-results a {
+				color: var(--cosmic-purple);
+				text-decoration: none;
+				border-bottom: 1px solid var(--cosmic-purple);
+			}
+			.no-results a:hover {
+				color: var(--burnt-sienna);
+				border-bottom-color: var(--burnt-sienna);
+			}
 			@media (max-width: 768px) {
 				.post-link {
 					flex-direction: column;
@@ -136,7 +197,14 @@ const ogImage = `${siteUrl}/pizzatownbuffet/images/og-default.png`;
 		</header>
 
 		<div class="posts-container">
-			{sortedPosts.map(post => (
+			{filterTag && (
+				<div class="filter-status">
+					<span class="filter-label">filtering by:</span>
+					<span class="filter-tag">{filterTag}</span>
+					<a href="/pizzatownbuffet/" class="clear-filter">clear</a>
+				</div>
+			)}
+			{filteredPosts.map(post => (
 				<article class="post-card">
 					<a href={`/pizzatownbuffet/posts/${post.slug}`} class="post-link">
 						<img src={previewImages[post.slug]} alt="" class="post-image" />
@@ -147,6 +215,12 @@ const ogImage = `${siteUrl}/pizzatownbuffet/images/og-default.png`;
 					</a>
 				</article>
 			))}
+			{filteredPosts.length === 0 && (
+				<div class="no-results">
+					<p>the void yields nothing for this incantation</p>
+					<a href="/pizzatownbuffet/">return to all transmissions</a>
+				</div>
+			)}
 		</div>
 
 		<footer class="site-footer">

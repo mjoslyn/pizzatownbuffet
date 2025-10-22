@@ -56,8 +56,14 @@ const shuffled = [...allTags].sort(() => Math.random() - 0.5);
     font-family: monospace;
     letter-spacing: 0.05em;
     transition: all 0.3s ease;
-    cursor: default;
+    cursor: pointer;
     user-select: none;
+  }
+
+  .tag.active {
+    background: var(--cosmic-purple);
+    color: white;
+    border-color: var(--cosmic-purple);
   }
 
   .tag:hover {
@@ -93,3 +99,36 @@ const shuffled = [...allTags].sort(() => Math.random() - 0.5);
     }
   }
 </style>
+
+<script>
+  // Client-side tag filtering
+  document.addEventListener('DOMContentLoaded', () => {
+    const tags = document.querySelectorAll('.tag');
+    const urlParams = new URLSearchParams(window.location.search);
+    const activeTag = urlParams.get('tag');
+
+    // Highlight active tag on page load
+    if (activeTag) {
+      tags.forEach(tag => {
+        if (tag.dataset.tag === activeTag) {
+          tag.classList.add('active');
+        }
+      });
+    }
+
+    // Add click handlers
+    tags.forEach(tag => {
+      tag.addEventListener('click', () => {
+        const tagName = tag.dataset.tag;
+        const currentTag = new URLSearchParams(window.location.search).get('tag');
+
+        // Toggle: if clicking active tag, clear filter
+        if (currentTag === tagName) {
+          window.location.href = window.location.pathname;
+        } else {
+          window.location.href = `${window.location.pathname}?tag=${tagName}`;
+        }
+      });
+    });
+  });
+</script>
