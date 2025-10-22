@@ -86,6 +86,13 @@ generatePsychedelicImage('public/images/example.png', [
   [0.0, 1.0, 0.5],   // Teal
 ]);
 
+// Generate phantom pocket image
+generatePsychedelicImage('public/images/phantom-pocket.png', [
+  [0.4, 0.2, 0.5],   // Deep purple
+  [0.2, 0.1, 0.3],   // Dark void
+  [0.6, 0.3, 0.6],   // Lighter purple
+]);
+
 console.log('\nGenerating OG/share images (1200x630)...');
 
 // Generate OG images for social sharing (1200x630px)
@@ -111,6 +118,12 @@ generatePsychedelicImage('public/images/og-example.png', [
   [0.5, 1.0, 0.0],
   [1.0, 1.0, 0.0],
   [0.0, 1.0, 0.5],
+], 1200, 630);
+
+generatePsychedelicImage('public/images/og-phantom-pocket.png', [
+  [0.4, 0.2, 0.5],
+  [0.2, 0.1, 0.3],
+  [0.6, 0.3, 0.6],
 ], 1200, 630);
 
 // Generate default OG image for homepage
