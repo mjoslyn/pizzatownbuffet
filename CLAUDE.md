@@ -16,7 +16,7 @@ When writing content for this project:
 
 ## Structure
 
-- `src/content/posts/` - MDX content files with frontmatter (title, date, tagline)
+- `src/content/posts/` - MDX content files with frontmatter (title, date, tagline, tags)
 - `src/content/config.ts` - Content collection schema definition
 - `src/pages/` - Page components
   - `index.astro` - Homepage with list view of posts (preview image, title, tagline)
@@ -24,6 +24,7 @@ When writing content for this project:
 - `src/components/` - Reusable components
   - `ShaderImage.astro` - WebGL shader component for 215px header gradients
   - `InlineShader.astro` - WebGL shader component for inline placement in content
+  - `TagCloud.astro` - Mystical tag cloud with arcane spell-like words
 - `src/styles/` - Global styles
   - `global.css` - White background theme with desert/cosmic colors
 - `public/images/` - Static PNG preview images (unique for each post)
@@ -44,7 +45,11 @@ When writing content for this project:
   - Varying heights (200-280px)
   - Random psychedelic color combinations
 - **PNG Preview Images**: Static versions of shaders for homepage, all unique
-- **Content Collections**: Type-safe frontmatter with title, date, tagline
+- **Arcane Tag Cloud**: Mystical tag system with spell-like words displayed in homepage header
+  - 20 arcane tags: chronomorph, somatica, rhythmancy, serpentis, void-pulse, syncopath, propriomancy, vertebrae-flow, molt-state, temporal-drift, resonance-hex, pocket-realm, frequency-weave, subdivision-curse, pattern-haunt, liminal-beat, bifurcate, membrane-echo, polychronic, arrhythmic-spell
+  - Random sizing and positioning for mystical effect
+  - Hover effects with burnt-sienna glow
+- **Content Collections**: Type-safe frontmatter with title, date, tagline, tags
 - **GitHub Pages Deployment**: Automated via GitHub Actions
 - **Mystical Voice**: All content written in skeptical, vague, mystical tone
 
@@ -52,8 +57,9 @@ When writing content for this project:
 
 When generating new content:
 - **Use MDX format** (`.mdx` extension) to support inline shader components
-- **Include frontmatter** with title, date, and tagline
+- **Include frontmatter** with title, date, tagline, and tags
   - Tagline should be vague, mystical, one short phrase capturing the essence
+  - Tags should be selected from the arcane vocabulary (3-7 tags per post)
 - **Add random shaders between sections** using the `InlineShader` component
 - Shaders should be partial width and float at different areas to create visual flow
 - Import at the top: `import InlineShader from '../../components/InlineShader.astro';`
@@ -80,6 +86,41 @@ Parameters:
 - `height`: CSS height
 
 Vary these randomly when generating content to create organic, flowing layouts.
+
+### Arcane Tags
+
+Available mystical tags for content categorization:
+
+- **chronomorph** - time-shifting essence
+- **somatica** - body knowledge spell
+- **rhythmancy** - rhythm divination
+- **serpentis** - snake realm
+- **void-pulse** - empty beat magic
+- **syncopath** - offbeat wandering
+- **propriomancy** - body sense hex
+- **vertebrae-flow** - spine current
+- **molt-state** - shedding phase
+- **temporal-drift** - time slippage
+- **resonance-hex** - sympathetic spell
+- **pocket-realm** - dimensional chamber
+- **frequency-weave** - vibration fabric
+- **subdivision-curse** - meter fragmentation
+- **pattern-haunt** - ghostly repetition
+- **liminal-beat** - threshold pulse
+- **bifurcate** - split-tongue magic
+- **membrane-echo** - skin resonance
+- **polychronic** - multiple times
+- **arrhythmic-spell** - disorder incantation
+
+Frontmatter example:
+```yaml
+---
+title: "rhythm, or whatever it is"
+date: 2025-10-21
+tagline: "vibration moving through space, allegedly"
+tags: ["rhythmancy", "temporal-drift", "void-pulse", "syncopath"]
+---
+```
 
 ## Tech Stack
 
