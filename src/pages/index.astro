@@ -12,6 +12,9 @@ const previewImages = {
   'snake-salvation': '/pizzatownbuffet/images/snake-salvation.png',
   'example': '/pizzatownbuffet/images/example.png',
 };
+
+const siteUrl = 'https://mjoslyn.github.io';
+const ogImage = `${siteUrl}/pizzatownbuffet/images/og-default.png`;
 ---
 
 <html lang="en">
@@ -21,6 +24,23 @@ const previewImages = {
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>pizzatownbuffet ~ transmissions from the vortex</title>
+
+		<!-- SEO Meta Tags -->
+		<meta name="description" content="patterns that shift, or don't" />
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={`${siteUrl}/pizzatownbuffet/`} />
+		<meta property="og:title" content="pizzatownbuffet" />
+		<meta property="og:description" content="patterns that shift, or don't" />
+		<meta property="og:image" content={ogImage} />
+
+		<!-- Twitter -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:url" content={`${siteUrl}/pizzatownbuffet/`} />
+		<meta name="twitter:title" content="pizzatownbuffet" />
+		<meta name="twitter:description" content="patterns that shift, or don't" />
+		<meta name="twitter:image" content={ogImage} />
 		<style>
 			.site-header {
 				text-align: center;
@@ -83,6 +103,15 @@ const previewImages = {
 				font-size: 1rem;
 				margin: 0;
 			}
+			.site-footer {
+				text-align: center;
+				padding: var(--space-lg) var(--space-sm);
+				color: var(--exhausted-gray);
+				font-size: 0.9rem;
+			}
+			.site-footer a {
+				color: var(--cosmic-purple);
+			}
 		</style>
 	</head>
 	<body>
@@ -104,5 +133,9 @@ const previewImages = {
 				</article>
 			))}
 		</div>
+
+		<footer class="site-footer">
+			<a href="https://github.com/mjoslyn/pizzatownbuffet" target="_blank" rel="noopener noreferrer">source</a>
+		</footer>
 	</body>
 </html>

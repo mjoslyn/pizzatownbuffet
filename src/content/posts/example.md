@@ -2,6 +2,7 @@
 title: "transmission test, or something like it"
 date: 2025-10-21
 tagline: "whether meaning emerges remains to be seen"
+ogImage: "/pizzatownbuffet/images/og-example.png"
 ---
 
 # pizzatownbuffet exists, allegedly

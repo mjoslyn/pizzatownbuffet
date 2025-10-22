@@ -26,6 +26,11 @@ const colorSchemes = {
     [0.0, 1.0, 0.8],   // Cyan
     [0.5, 0.0, 1.0],   // Purple
   ],
+  'snake-salvation': [
+    [0.2, 0.8, 0.3],   // Green
+    [0.8, 0.7, 0.1],   // Yellow
+    [0.6, 0.2, 0.8],   // Purple
+  ],
   'example': [
     [0.5, 1.0, 0.0],   // Lime green
     [1.0, 1.0, 0.0],   // Yellow
@@ -34,6 +39,8 @@ const colorSchemes = {
 };
 
 const colors = colorSchemes[post.slug] || colorSchemes['example'];
+const siteUrl = 'https://mjoslyn.github.io';
+const ogImage = post.data.ogImage ? `${siteUrl}${post.data.ogImage}` : `${siteUrl}/pizzatownbuffet/images/og-default.png`;
 ---
 
 <html lang="en">
@@ -43,6 +50,23 @@ const colors = colorSchemes[post.slug] || colorSchemes['example'];
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>{post.data.title} ~ pizzatownbuffet</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content={post.data.tagline || 'patterns that shift, or don\'t'} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content={`${siteUrl}/pizzatownbuffet/posts/${post.slug}`} />
+    <meta property="og:title" content={post.data.title} />
+    <meta property="og:description" content={post.data.tagline || 'patterns that shift, or don\'t'} />
+    <meta property="og:image" content={ogImage} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={`${siteUrl}/pizzatownbuffet/posts/${post.slug}`} />
+    <meta name="twitter:title" content={post.data.title} />
+    <meta name="twitter:description" content={post.data.tagline || 'patterns that shift, or don\'t'} />
+    <meta name="twitter:image" content={ogImage} />
     <style>
       article {
         max-width: 900px;
@@ -79,6 +103,15 @@ const colors = colorSchemes[post.slug] || colorSchemes['example'];
       article :global(p) {
         margin-bottom: var(--space-md);
       }
+      .site-footer {
+        text-align: center;
+        padding: var(--space-md) var(--space-sm);
+        color: var(--exhausted-gray);
+        font-size: 0.9rem;
+      }
+      .site-footer a {
+        color: var(--cosmic-purple);
+      }
     </style>
   </head>
   <body>
@@ -95,5 +128,8 @@ const colors = colorSchemes[post.slug] || colorSchemes['example'];
     <div style="text-align: center;">
       <a href="/pizzatownbuffet/" class="back-link">← return to the vortex</a>
     </div>
+    <footer class="site-footer">
+      <a href="https://github.com/mjoslyn/pizzatownbuffet" target="_blank" rel="noopener noreferrer">source</a>
+    </footer>
   </body>
 </html>

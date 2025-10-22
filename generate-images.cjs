@@ -1,9 +1,7 @@
 const { createCanvas } = require('canvas');
 const fs = require('fs');
 
-function generatePsychedelicImage(filename, colors) {
-  const width = 800;
-  const height = 400;
+function generatePsychedelicImage(filename, colors, width = 800, height = 400) {
   const canvas = createCanvas(width, height);
   const ctx = canvas.getContext('2d');
 
@@ -87,3 +85,37 @@ generatePsychedelicImage('public/images/example.png', [
   [1.0, 1.0, 0.0],   // Yellow
   [0.0, 1.0, 0.5],   // Teal
 ]);
+
+console.log('\nGenerating OG/share images (1200x630)...');
+
+// Generate OG images for social sharing (1200x630px)
+generatePsychedelicImage('public/images/og-rhythm-meaning.png', [
+  [1.0, 0.0, 0.5],
+  [1.0, 0.5, 0.0],
+  [0.5, 0.0, 1.0],
+], 1200, 630);
+
+generatePsychedelicImage('public/images/og-rhythm-tides.png', [
+  [0.0, 0.5, 1.0],
+  [0.0, 1.0, 0.8],
+  [0.5, 0.0, 1.0],
+], 1200, 630);
+
+generatePsychedelicImage('public/images/og-snake-salvation.png', [
+  [0.2, 0.8, 0.3],
+  [0.8, 0.7, 0.1],
+  [0.6, 0.2, 0.8],
+], 1200, 630);
+
+generatePsychedelicImage('public/images/og-example.png', [
+  [0.5, 1.0, 0.0],
+  [1.0, 1.0, 0.0],
+  [0.0, 1.0, 0.5],
+], 1200, 630);
+
+// Generate default OG image for homepage
+generatePsychedelicImage('public/images/og-default.png', [
+  [0.6, 0.2, 0.8],   // Cosmic purple
+  [0.8, 0.3, 0.1],   // Burnt sienna
+  [0.5, 0.5, 0.5],   // Exhausted gray
+], 1200, 630);

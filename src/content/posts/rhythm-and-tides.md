@@ -2,6 +2,7 @@
 title: "tides and rhythm, supposedly related"
 date: 2025-10-21
 tagline: "the moon pulls, or so they say"
+ogImage: "/pizzatownbuffet/images/og-rhythm-tides.png"
 ---
 
 # tides and rhythm, supposedly related
