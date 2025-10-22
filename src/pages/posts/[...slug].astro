@@ -1,0 +1,99 @@
+---
+import { getCollection } from 'astro:content';
+import ShaderImage from '../../components/ShaderImage.astro';
+import '../../styles/global.css';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: post,
+  }));
+}
+
+const post = Astro.props;
+const { Content } = await post.render();
+
+// Color schemes for each post
+const colorSchemes = {
+  'meaning-in-rhythm': [
+    [1.0, 0.0, 0.5],   // Hot pink
+    [1.0, 0.5, 0.0],   // Orange
+    [0.5, 0.0, 1.0],   // Purple
+  ],
+  'rhythm-and-tides': [
+    [0.0, 0.5, 1.0],   // Ocean blue
+    [0.0, 1.0, 0.8],   // Cyan
+    [0.5, 0.0, 1.0],   // Purple
+  ],
+  'example': [
+    [0.5, 1.0, 0.0],   // Lime green
+    [1.0, 1.0, 0.0],   // Yellow
+    [0.0, 1.0, 0.5],   // Teal
+  ],
+};
+
+const colors = colorSchemes[post.slug] || colorSchemes['example'];
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{post.data.title} ~ pizzatownbuffet</title>
+    <style>
+      article {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: var(--space-lg) var(--space-md);
+      }
+      .post-header {
+        text-align: center;
+        margin-bottom: var(--space-lg);
+        padding-bottom: var(--space-md);
+        border-bottom: 1px solid var(--cosmic-purple);
+      }
+      .back-link {
+        display: inline-block;
+        margin: var(--space-md);
+        padding: 12px 24px;
+        background: rgba(107, 44, 145, 0.2);
+        border: 1px solid var(--cosmic-purple);
+        border-radius: 6px;
+        text-align: center;
+        transition: all 0.3s ease;
+      }
+      .back-link:hover {
+        background: rgba(107, 44, 145, 0.4);
+        filter: drop-shadow(0 0 10px var(--cosmic-purple));
+      }
+      article :global(h2) {
+        margin-top: var(--space-lg);
+        padding-top: var(--space-md);
+      }
+      article :global(h3) {
+        margin-top: var(--space-md);
+      }
+      article :global(p) {
+        margin-bottom: var(--space-md);
+      }
+    </style>
+  </head>
+  <body>
+    <ShaderImage id={`shader-${post.slug}`} colors={colors} />
+    <article>
+      <div class="post-header">
+        <h1>{post.data.title}</h1>
+        <time datetime={post.data.date.toISOString()}>
+          {post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+        </time>
+      </div>
+      <Content />
+    </article>
+    <div style="text-align: center;">
+      <a href="/pizzatownbuffet/" class="back-link">← return to the vortex</a>
+    </div>
+  </body>
+</html>

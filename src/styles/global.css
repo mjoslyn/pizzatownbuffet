@@ -1,0 +1,137 @@
+:root {
+  /* Sedona desert colors mixed with cosmic mysticism */
+  --magma-red: #C1440E;
+  --red-rock: #8B4513;
+  --burnt-sienna: #E97451;
+  --desert-sand: #EDC9AF;
+  --cosmic-purple: #6B2C91;
+  --mystical-indigo: #4B0082;
+  --alien-green: #7CFC00;
+  --void-black: #0A0A0A;
+  --stardust-white: #F5F5F0;
+  --exhausted-gray: #696969;
+
+  /* Typography */
+  --font-body: 'Georgia', 'Times New Roman', serif;
+  --font-heading: 'Helvetica Neue', 'Arial', sans-serif;
+
+  /* Spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 6rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: white;
+  color: var(--void-black);
+  font-family: var(--font-body);
+  line-height: 1.8;
+  font-size: 1.125rem;
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  text-transform: lowercase;
+  color: var(--burnt-sienna);
+  margin-bottom: var(--space-sm);
+}
+
+h1 {
+  font-size: 3rem;
+  background: linear-gradient(45deg, var(--magma-red), var(--burnt-sienna), var(--cosmic-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: var(--space-md);
+}
+
+h2 {
+  font-size: 2rem;
+  color: var(--burnt-sienna);
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+a {
+  color: var(--cosmic-purple);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  color: var(--burnt-sienna);
+  border-bottom-color: var(--burnt-sienna);
+}
+
+p {
+  margin-bottom: var(--space-sm);
+  color: var(--void-black);
+}
+
+time {
+  color: var(--exhausted-gray);
+  font-style: italic;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+}
+
+/* Mystical glow effect for interactive elements */
+button, .interactive {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+button:hover, .interactive:hover {
+  filter: drop-shadow(0 0 8px var(--cosmic-purple));
+}
+
+/* Code blocks - for the mystical technomancer vibes */
+code {
+  background: rgba(107, 44, 145, 0.1);
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  font-family: 'Courier New', monospace;
+  color: var(--cosmic-purple);
+}
+
+pre {
+  background: rgba(237, 201, 175, 0.2);
+  padding: var(--space-sm);
+  border-radius: 8px;
+  overflow-x: auto;
+  border-left: 4px solid var(--magma-red);
+  margin-bottom: var(--space-sm);
+}
+
+blockquote {
+  border-left: 4px solid var(--cosmic-purple);
+  padding-left: var(--space-sm);
+  margin: var(--space-md) 0;
+  font-style: italic;
+  color: var(--exhausted-gray);
+}
+
+/* Smooth scrolling for the weary traveler */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection styling */
+::selection {
+  background: var(--desert-sand);
+  color: var(--void-black);
+}

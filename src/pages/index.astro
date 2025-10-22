@@ -1,5 +1,17 @@
 ---
+import { getCollection } from 'astro:content';
+import '../styles/global.css';
 
+const posts = await getCollection('posts');
+const sortedPosts = posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+// Map slugs to preview images
+const previewImages = {
+  'meaning-in-rhythm': '/pizzatownbuffet/images/rhythm-meaning.png',
+  'rhythm-and-tides': '/pizzatownbuffet/images/rhythm-tides.png',
+  'snake-salvation': '/pizzatownbuffet/images/snake-salvation.png',
+  'example': '/pizzatownbuffet/images/example.png',
+};
 ---
 
 <html lang="en">
@@ -8,9 +20,89 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>pizzatownbuffet ~ transmissions from the vortex</title>
+		<style>
+			.site-header {
+				text-align: center;
+				padding: var(--space-lg) var(--space-sm);
+			}
+			.site-title {
+				font-size: 4rem;
+				margin-bottom: var(--space-xs);
+			}
+			.site-tagline {
+				color: var(--exhausted-gray);
+				font-style: italic;
+				font-size: 1.1rem;
+				letter-spacing: 0.1em;
+			}
+			.posts-container {
+				max-width: 900px;
+				margin: 0 auto;
+				padding: var(--space-md);
+				display: flex;
+				flex-direction: column;
+				gap: var(--space-md);
+			}
+			.post-card {
+				border: 1px solid var(--cosmic-purple);
+				border-radius: 8px;
+				overflow: hidden;
+				background: rgba(107, 44, 145, 0.05);
+				transition: all 0.3s ease;
+			}
+			.post-card:hover {
+				background: rgba(107, 44, 145, 0.1);
+				border-color: var(--burnt-sienna);
+			}
+			.post-link {
+				display: flex;
+				text-decoration: none;
+				border: none;
+			}
+			.post-image {
+				width: 280px;
+				height: 180px;
+				object-fit: cover;
+				flex-shrink: 0;
+			}
+			.post-content {
+				padding: var(--space-md);
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+			}
+			.post-title {
+				font-size: 1.8rem;
+				margin-bottom: var(--space-xs);
+				color: var(--cosmic-purple);
+			}
+			.post-tagline {
+				color: var(--exhausted-gray);
+				font-style: italic;
+				font-size: 1rem;
+				margin: 0;
+			}
+		</style>
 	</head>
 	<body>
-		<h1>Astro</h1>
+		<header class="site-header">
+			<h1 class="site-title">pizzatownbuffet</h1>
+			<p class="site-tagline">patterns that shift, or don't</p>
+		</header>
+
+		<div class="posts-container">
+			{sortedPosts.map(post => (
+				<article class="post-card">
+					<a href={`/pizzatownbuffet/posts/${post.slug}`} class="post-link">
+						<img src={previewImages[post.slug]} alt="" class="post-image" />
+						<div class="post-content">
+							<h2 class="post-title">{post.data.title}</h2>
+							<p class="post-tagline">{post.data.tagline || 'something about patterns, maybe'}</p>
+						</div>
+					</a>
+				</article>
+			))}
+		</div>
 	</body>
 </html>
