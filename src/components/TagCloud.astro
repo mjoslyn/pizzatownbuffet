@@ -1,0 +1,95 @@
+---
+// All available arcane tags in the system
+const allTags = [
+  'chronomorph',
+  'somatica',
+  'rhythmancy',
+  'serpentis',
+  'void-pulse',
+  'syncopath',
+  'propriomancy',
+  'vertebrae-flow',
+  'molt-state',
+  'temporal-drift',
+  'resonance-hex',
+  'pocket-realm',
+  'frequency-weave',
+  'subdivision-curse',
+  'pattern-haunt',
+  'liminal-beat',
+  'bifurcate',
+  'membrane-echo',
+  'polychronic',
+  'arrhythmic-spell'
+];
+
+// Shuffle and assign random sizes for mystical effect
+const shuffled = [...allTags].sort(() => Math.random() - 0.5);
+---
+
+<div class="tag-cloud">
+  {shuffled.map((tag) => (
+    <span class="tag" data-tag={tag}>{tag}</span>
+  ))}
+</div>
+
+<style>
+  .tag-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    justify-content: center;
+    align-items: center;
+    padding: var(--space-md) 0;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    background: rgba(107, 44, 145, 0.08);
+    color: var(--cosmic-purple);
+    border: 1px solid rgba(107, 44, 145, 0.2);
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-family: monospace;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
+    cursor: default;
+    user-select: none;
+  }
+
+  .tag:hover {
+    background: rgba(107, 44, 145, 0.15);
+    border-color: var(--burnt-sienna);
+    color: var(--burnt-sienna);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Mystical random sizing effect */
+  .tag:nth-child(3n) {
+    font-size: 1rem;
+  }
+
+  .tag:nth-child(5n) {
+    font-size: 0.85rem;
+  }
+
+  .tag:nth-child(7n) {
+    font-size: 1.1rem;
+  }
+
+  @media (max-width: 768px) {
+    .tag-cloud {
+      gap: 0.4rem;
+      padding: var(--space-sm) 0;
+    }
+
+    .tag {
+      font-size: 0.8rem !important;
+      padding: 0.25rem 0.6rem;
+    }
+  }
+</style>
